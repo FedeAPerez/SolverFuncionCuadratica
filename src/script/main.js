@@ -1,3 +1,4 @@
+// --------------------------
 /*		
 		Solver de la función cuadrática.
 		Versión Beta por Fede A. Pérez (@fedeaperez - Twitter)
@@ -29,13 +30,31 @@
 			- Gráfico de la función y de sus puntos notables.
 			- Sitio web online, y posible aplicación (para moviles).
 */
+
+// Funcionalidad
+
+var  funcionalidad = {
+	signo: function(num){
+		this.num = num;
+		if (num >= 0){
+			return("+" + this.num);
+		} else{
+			return(this.num);
+		}
+	}
+};
+
+// Programa
 $(document).ready(function(){
 	$("div#start").click(function(){
-		// Mayor Funcionalidad
+		// Almacenando selectores
 		var dataShow = $("div#data");
 
 		// Función principal
 		var solv = function (a, b, c){
+
+		// F(x) = ax²+bx+c
+		dataShow.html("ƒ(x) = " + funcionalidad.signo(a) + "x² " + funcionalidad.signo(b) + "x " + funcionalidad.signo(c));
 
 		// Raices
     	var discriminant = (b * b) + ((-4.0) * (a * c));
@@ -43,7 +62,7 @@ $(document).ready(function(){
 			var x1 = ((-b) + Math.sqrt(discriminant)) / (2.0 * a);
 			var x2 = ((-b) - Math.sqrt(discriminant)) / (2.0 * a);
 			if (x1 === x2){
-				dataShow.html("<Br />Las raices son iguales, y valen: " + x1); // Sí el discriminante === 0
+				dataShow.append("<Br />Las raices son iguales, y valen: " + x1); // Sí el discriminante === 0
 			}else{ // Sí el discriminante >0
 				dataShow.append("<Br />La primer raíz vale: " + x1);
 				dataShow.append("<Br />La segunda raíz vale: " + x2);
